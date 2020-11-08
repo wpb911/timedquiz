@@ -29,9 +29,8 @@ body {
     display: table;
   }
 
-hr {
-clear: left;
-clear: right;
+#goback, #clearscore {
+    display: none ;
 }
   
 .highscore {
@@ -51,7 +50,20 @@ clear: right;
     margin: 0 auto;
     text-align: center;
 }
-  
+.wrapper1 {
+    width: 800px;
+    margin: 0 auto;
+    text-align: center;
+   
+}
+.invisible {
+    visibility: hidden ;
+}  
+
+.visible {
+    display: on ;
+} 
+
 h1 {
     font-size: 3em;
 }
@@ -68,7 +80,7 @@ h1 {
     line-height: 0;
     padding: 20px;
 }
-#start-quiz {
+#startquiz {
     border-radius: 4px;
     border-style: none;
     box-shadow: rgba(34,36,38,.15) 0 0 0 0 inset;
@@ -81,11 +93,11 @@ h1 {
     padding: 20px;
 }
   
-#start-quiz {
+#startquiz {
     background-color: #2185d0;
 }
   
-#start-quiz:hover {
+#startquiz:hover {
     background-color: #1678c2;
 }
   
@@ -95,5 +107,21 @@ h1 {
   
 #subtract:hover {
     background-color: #CF1919;
+}
+
+ li {
+    border-radius: 4px;
+    border-style: none;
+    box-shadow: rgba(34,36,38,.15) 0 0 0 0 inset;
+    color: #fff;
+    cursor: pointer;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    font-size: 1em;
+    font-weight: 700;
+    line-height: 0;
+    padding: 0px;
+    text-align: left;
+   
+
 }
   
