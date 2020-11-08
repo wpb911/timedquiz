@@ -9,7 +9,7 @@ The coding was completed up to calculating the total score. Future enhancements 
 
 ## Usage 
 
-When viewing the page a sample rendering looks like [Coding Quiz Challenge screenshot](cqc.png).
+When viewing the page a sample rendering looks like ![Coding Quiz Challenge screenshot](cqc.png).
 
 To view the actual page in realtime please use the chrome browser to go to [timequiz](https://wpb911.github.io/timedquiz/)
 
