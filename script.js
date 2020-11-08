@@ -7,6 +7,7 @@ var divEl =  document.querySelector("#wrapper");
 var h1El = document.querySelector("h1");
 var divq1El =  document.querySelector("#wrapper1");
 var q1El = document.querySelector(".question");
+var h2El = document.createElement("h2");
 
 //create elements for the question and answers 
 var answerEl = document.createElement("div");
@@ -19,12 +20,11 @@ var answerEl = document.createElement("div");
     var bu2 = document.createElement("button");
     var bu3 = document.createElement("button");
     var bu4 = document.createElement("button");
+
 //create output element for correct or incorrect notification to user
-    var sayit = document.createElement("p");
+var sayit = document.createElement("p");
 
-    // Store our li elements in a variable
-var listItems = document.getElementsByTagName("li");
-
+ //create question and answer objects 
 var qa1 = {
     question : "Commonly used data types do NOT include:",
     ans1 : "1. strings",
@@ -72,9 +72,7 @@ var qa5 = {
     correct: "ans4"
 
 };
-
-
-
+var finalScore = 75
 var secondsLeft = 75;
 
 
@@ -82,22 +80,39 @@ startQuiz.addEventListener("click", function(){
     
     
     //remove the h1 tag text, p tag text, and startbutton
-     //divEl.innerHTML = "";
     h1El.innerHTML = "";
     questionEl.remove();
     startQuiz.remove();
-
-    
-    //questionEl.innerHTML = "";
-   
-    //startQuiz.setAttribute("display", "none");
-  
     
     startQuizTimer();
+    askfirst();
+    asksecond();
+    askthird();
+    askfourth();
+    askfifth();
+     
+});
+
+
+
+function startQuizTimer() {
+    var timerInterval = setInterval(function() {
+      secondsLeft--;
+      timeEl.textContent = secondsLeft ;
+  
+      if(secondsLeft <= 0) {
+        clearInterval(timerInterval);
+        //sendMessage();
+      }
+  
+    }, 1000);
+}
+
+function askfirst() {
 
     //ask the first question
     
-    var h2El = document.createElement("h2");
+    //var h2El = document.createElement("h2");
     h2El.textContent = qa1.question;
     bu1.textContent = qa1.ans1 ;
     bu2.textContent = qa1.ans2 ;
@@ -130,8 +145,6 @@ startQuiz.addEventListener("click", function(){
     li4.appendChild(bu4);
 
 
-
-
     //set attributes for question and answers
     h2El.setAttribute("style","margin:auto; width:50%; text-align:left;");
     bu1.setAttribute("style", "margin:auto; width:auto; text-align:left; color:white; border-radius: 5px; background-color: purple; padding:4px;");
@@ -161,25 +174,289 @@ startQuiz.addEventListener("click", function(){
             secondsLeft = secondsLeft - 10;
 
         }
-       
-        //setCounterText();
+        //h2El.innerHTML = "";
     });
-
-});
-
+};
 
 
-function startQuizTimer() {
-    var timerInterval = setInterval(function() {
-      secondsLeft--;
-      timeEl.textContent = secondsLeft ;
+function askthird() {
+
+    //ask the third question
+    
+    
+    h2El.textContent = qa3.question;
+    bu1.textContent = qa3.ans1 ;
+    bu2.textContent = qa3.ans2 ;
+    bu3.textContent = qa3.ans3 ;
+    bu4.textContent = qa3.ans4 ;
+    
+
+    //add header 2 for questions
+    body.appendChild(h2El);
+    //add list for header 2
+    h2El.appendChild(listEl);
+    //add list item1 for header 2
+    listEl.appendChild(li1);
+        //add button1 to list item 
+    li1.appendChild(bu1);
+    
+    //add list item 2
+    listEl.appendChild(li2);
+    //add button1 to list item 
+    li2.appendChild(bu2);
+    
+    //add list item 3
+    listEl.appendChild(li3);
+    //add button1 to list item 
+    li3.appendChild(bu3);
+
+    //add list item 4
+    listEl.appendChild(li4);
+    //add button1 to list item 
+    li4.appendChild(bu4);
+
+
+    //set attributes for question and answers
+    h2El.setAttribute("style","margin:auto; width:50%; text-align:left;");
+    bu1.setAttribute("style", "margin:auto; width:auto; text-align:left; color:white; border-radius: 5px; background-color: purple; padding:4px;");
+    bu2.setAttribute("style", "margin:auto; width:auto; text-align:left; color:white; border-radius: 5px; background-color: purple; padding:4px;");
+    bu3.setAttribute("style", "margin:auto; width:auto; text-align:left; color:white; border-radius: 5px; background-color: purple; padding:4px;");
+    bu4.setAttribute("style", "margin:auto; width:auto; text-align:left; color:white; border-radius: 5px; background-color: purple; padding:4px;");
+    
+    //set attribute for verifying answer
+    bu1.setAttribute("name", "ans1");
+    bu2.setAttribute("name", "ans2");
+    bu3.setAttribute("name", "ans3");
+    bu4.setAttribute("name", "ans4");
+    
+    //event delegation for answer choice 
+    listEl.addEventListener("click", function(interval) {
+        var pick = interval.target.name;     
+        console.log(pick);
+
+        if (pick === "ans4") {
+
+            sayit.textContent = "Correct!";
+            h2El.appendChild(sayit);
+
+        } else {
+            sayit.textContent = "Wrong!"
+            h2El.appendChild(sayit);
+            secondsLeft = secondsLeft - 10;
+
+        }
+    });
+};
+
+function asksecond() {
+
+    //ask the second question
+    
+    
+    h2El.textContent = qa2.question;
+    bu1.textContent = qa2.ans1 ;
+    bu2.textContent = qa2.ans2 ;
+    bu3.textContent = qa2.ans3 ;
+    bu4.textContent = qa2.ans4 ;
+    
+
+    //add header 2 for questions
+    body.appendChild(h2El);
+    //add list for header 2
+    h2El.appendChild(listEl);
+    //add list item1 for header 2
+    listEl.appendChild(li1);
+        //add button1 to list item 
+    li1.appendChild(bu1);
+    
+    //add list item 2
+    listEl.appendChild(li2);
+    //add button1 to list item 
+    li2.appendChild(bu2);
+    
+    //add list item 3
+    listEl.appendChild(li3);
+    //add button1 to list item 
+    li3.appendChild(bu3);
+
+    //add list item 4
+    listEl.appendChild(li4);
+    //add button1 to list item 
+    li4.appendChild(bu4);
+
+
+    //set attributes for question and answers
+    h2El.setAttribute("style","margin:auto; width:50%; text-align:left;");
+    bu1.setAttribute("style", "margin:auto; width:auto; text-align:left; color:white; border-radius: 5px; background-color: purple; padding:4px;");
+    bu2.setAttribute("style", "margin:auto; width:auto; text-align:left; color:white; border-radius: 5px; background-color: purple; padding:4px;");
+    bu3.setAttribute("style", "margin:auto; width:auto; text-align:left; color:white; border-radius: 5px; background-color: purple; padding:4px;");
+    bu4.setAttribute("style", "margin:auto; width:auto; text-align:left; color:white; border-radius: 5px; background-color: purple; padding:4px;");
+    
+    //set attribute for verifying answer
+    bu1.setAttribute("name", "ans1");
+    bu2.setAttribute("name", "ans2");
+    bu3.setAttribute("name", "ans3");
+    bu4.setAttribute("name", "ans4");
+    
+    //event delegation for answer choice 
+    listEl.addEventListener("click", function(interval) {
+        var pick = interval.target.name;     
+        console.log(pick);
+
+        if (pick === "ans3") {
+
+            sayit.textContent = "Correct!";
+            h2El.appendChild(sayit);
+
+        } else {
+            sayit.textContent = "Wrong!"
+            h2El.appendChild(sayit);
+            secondsLeft = secondsLeft - 10;
+
+        }
+    });
+};
   
-      if(secondsLeft <= 0) {
-        clearInterval(timerInterval);
-        //sendMessage();
-      }
-  
-    }, 1000);
-}
+function askfourth() {
 
-  
+    //ask the fourth question
+    
+    
+    h2El.textContent = qa4.question;
+    bu1.textContent = qa4.ans1 ;
+    bu2.textContent = qa4.ans2 ;
+    bu3.textContent = qa4.ans3 ;
+    bu4.textContent = qa4.ans4 ;
+    
+
+    //add header 2 for questions
+    body.appendChild(h2El);
+    //add list for header 2
+    h2El.appendChild(listEl);
+    //add list item1 for header 2
+    listEl.appendChild(li1);
+        //add button1 to list item 
+    li1.appendChild(bu1);
+    
+    //add list item 2
+    listEl.appendChild(li2);
+    //add button1 to list item 
+    li2.appendChild(bu2);
+    
+    //add list item 3
+    listEl.appendChild(li3);
+    //add button1 to list item 
+    li3.appendChild(bu3);
+
+    //add list item 4
+    listEl.appendChild(li4);
+    //add button1 to list item 
+    li4.appendChild(bu4);
+
+
+    //set attributes for question and answers
+    h2El.setAttribute("style","margin:auto; width:50%; text-align:left;");
+    bu1.setAttribute("style", "margin:auto; width:auto; text-align:left; color:white; border-radius: 5px; background-color: purple; padding:4px;");
+    bu2.setAttribute("style", "margin:auto; width:auto; text-align:left; color:white; border-radius: 5px; background-color: purple; padding:4px;");
+    bu3.setAttribute("style", "margin:auto; width:auto; text-align:left; color:white; border-radius: 5px; background-color: purple; padding:4px;");
+    bu4.setAttribute("style", "margin:auto; width:auto; text-align:left; color:white; border-radius: 5px; background-color: purple; padding:4px;");
+    
+    //set attribute for verifying answer
+    bu1.setAttribute("name", "ans1");
+    bu2.setAttribute("name", "ans2");
+    bu3.setAttribute("name", "ans3");
+    bu4.setAttribute("name", "ans4");
+    
+    //event delegation for answer choice 
+    listEl.addEventListener("click", function(interval) {
+        var pick = interval.target.name;     
+        console.log(pick);
+
+        if (pick === "ans4") {
+
+            sayit.textContent = "Correct!";
+            h2El.appendChild(sayit);
+
+        } else {
+            sayit.textContent = "Wrong!"
+            h2El.appendChild(sayit);
+            secondsLeft = secondsLeft - 10;
+
+        }
+    });
+};
+
+function askfifth() {
+
+    //ask the fifth question
+    
+    
+    h2El.textContent = qa5.question;
+    bu1.textContent = qa5.ans1 ;
+    bu2.textContent = qa5.ans2 ;
+    bu3.textContent = qa5.ans3 ;
+    bu4.textContent = qa5.ans4 ;
+    
+
+    //add header 2 for questions
+    body.appendChild(h2El);
+    //add list for header 2
+    h2El.appendChild(listEl);
+    //add list item1 for header 2
+    listEl.appendChild(li1);
+        //add button1 to list item 
+    li1.appendChild(bu1);
+    
+    //add list item 2
+    listEl.appendChild(li2);
+    //add button1 to list item 
+    li2.appendChild(bu2);
+    
+    //add list item 3
+    listEl.appendChild(li3);
+    //add button1 to list item 
+    li3.appendChild(bu3);
+
+    //add list item 4
+    listEl.appendChild(li4);
+    //add button1 to list item 
+    li4.appendChild(bu4);
+
+
+    //set attributes for question and answers
+    h2El.setAttribute("style","margin:auto; width:50%; text-align:left;");
+    bu1.setAttribute("style", "margin:auto; width:auto; text-align:left; color:white; border-radius: 5px; background-color: purple; padding:4px;");
+    bu2.setAttribute("style", "margin:auto; width:auto; text-align:left; color:white; border-radius: 5px; background-color: purple; padding:4px;");
+    bu3.setAttribute("style", "margin:auto; width:auto; text-align:left; color:white; border-radius: 5px; background-color: purple; padding:4px;");
+    bu4.setAttribute("style", "margin:auto; width:auto; text-align:left; color:white; border-radius: 5px; background-color: purple; padding:4px;");
+    
+    //set attribute for verifying answer
+    bu1.setAttribute("name", "ans1");
+    bu2.setAttribute("name", "ans2");
+    bu3.setAttribute("name", "ans3");
+    bu4.setAttribute("name", "ans4");
+    
+    //event delegation for answer choice 
+    listEl.addEventListener("click", function(interval) {
+        var pick = interval.target.name;     
+        console.log(pick);
+
+        if (pick === "ans4") {
+
+            sayit.textContent = "Correct!";
+            h2El.appendChild(sayit);
+
+        } else {
+            sayit.textContent = "Wrong!"
+            h2El.appendChild(sayit);
+            secondsLeft = secondsLeft - 10;
+
+        }
+
+        //final score is the number of seconds left after the 5th question is answered 
+        finalscore = secondsLeft;
+
+
+
+    });
+};
